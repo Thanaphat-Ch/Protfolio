@@ -11,6 +11,7 @@ const EXPERIENCES = [
     role: "Web Developer",
     company: "",
     // period: "2023 - ปัจจุบัน",
+    period: "",
     description: ""
   },
   {
@@ -18,6 +19,7 @@ const EXPERIENCES = [
     role: "Mobile Application Developer",
     company: "Magnitude plus Co., Ltd.",
     // period: "2020 - 2023",
+    period: "",
     description: "ฝึกงานพัฒนาแอพพลิเคชันสั่งงาน/รับงานรถบรรทุก และเว็บไซต์ admin dashboard สำหรับใช้ในองค์กร ด้วย React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ร่วมมือกับเพื่อนๆในทีมเพื่อพัฒนาแอปพลิเคชันที่ตอบโจทย์ความต้องการของลูกค้า"
   },
   // {
@@ -34,7 +36,7 @@ const PROJECTS = [
     id: 1,
     title: "E-Commerce Platform",
     category: "Web Application",
-    image: "/public/freelancefreely.png",
+    image: "/freelancefreely.png",
     description: "แพลตฟอร์มหางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี",
     tech: ["React", "JavaScript", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
     link: "https://freelancefreely.vercel.app/"
@@ -43,7 +45,7 @@ const PROJECTS = [
     id: 2,
     title: "AI Crop Prediction System",
     category: "AI / Data Science",
-    image: "/public/Crop_Prediction_System.png",
+    image: "/Crop_Prediction_System.png",
     description: "ระบบ AI คาดการณ์พืชที่เหมาะสมต่อการเพาะปลูกของแต่ละพื้นที่ โดยใช้ AI วิธี Decision Tree และข้อมูลสภาพอากาศและดินจากแหล่งข้อมูลภายนอก",
     tech: ["Python", "Streamlit"],
     link: "https://crop-prediction-system.streamlit.app/"
@@ -52,7 +54,7 @@ const PROJECTS = [
     id: 3,
     title: "Mask Detection System",
     category: "AI / Computer Vision",
-    image: "./assets/Mask_Detection_System.png",
+    image: "/Mask_Detection_System.png",
     description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
     tech: ["HTML", "JavaScript", "TensorFlow.js"],
     link: "https://thanaphat-ch.github.io/maskDetection/"
@@ -61,7 +63,7 @@ const PROJECTS = [
     id: 4,
     title: "Mask Detection System",
     category: "AI / Computer Vision",
-    image: "/assets/Mask_Detection_System.png",
+    image: "/Mask_Detection_System.png",
     description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
     tech: ["JavaScript", "TensorFlow.js", "YOLOv5"],
     link: "https://thanaphat-ch.github.io/maskDetection/"
