@@ -59,15 +59,15 @@ const PROJECTS = [
     tech: ["HTML", "JavaScript", "TensorFlow.js"],
     link: "https://thanaphat-ch.github.io/maskDetection/"
   },
-  {
-    id: 4,
-    title: "Mask Detection System",
-    category: "AI / Computer Vision",
-    image: "/Mask_Detection_System.png",
-    description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
-    tech: ["JavaScript", "TensorFlow.js", "YOLOv5"],
-    link: "https://thanaphat-ch.github.io/maskDetection/"
-  }
+  // {
+  //   id: 4,
+  //   title: "Mask Detection System",
+  //   category: "AI / Computer Vision",
+  //   image: "/Mask_Detection_System.png",
+  //   description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
+  //   tech: ["JavaScript", "TensorFlow.js", "YOLOv5"],
+  //   link: "https://thanaphat-ch.github.io/maskDetection/"
+  // }
 ];
 
 const SKILLS = ["JavaScript", "TypeScript", "React", "Next.js", "express.js", "Tailwind CSS", "MySQL", "Figma"];
@@ -84,7 +84,7 @@ export default function Portfolio() {
       setIsScrolled(window.scrollY > 50);
 
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'experience', 'projects'];
+      const sections = ['home', 'about', 'experience', 'portfolios'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -131,7 +131,7 @@ export default function Portfolio() {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5 md:py-6'}`}>
         <div className="container mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center max-w-10xl">
           <div className="text-xl font-bold tracking-tighter cursor-pointer" onClick={() => scrollTo('home')}>
-            THANAPHAT.<span className="text-neutral-400">PORTFOLIO</span>
+            THANAPHAT.<span className="text-neutral-400">CH</span>
           </div>
 
           {/* Desktop Menu */}
@@ -188,9 +188,9 @@ export default function Portfolio() {
         {/* Hero Section */}
         <section id="home" className="min-h-screen flex flex-col justify-center items-center pt-24 pb-12 px-6 sm:px-10 lg:px-20 relative">
           <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 animate-fade-in-up">
-            <div className="inline-block px-3 py-1.5 rounded-full bg-neutral-200/50 text-neutral-600 text-xs sm:text-sm font-medium mb-2 sm:mb-4">
+            {/* <div className="inline-block px-3 py-1.5 rounded-full bg-neutral-200/50 text-neutral-600 text-xs sm:text-sm font-medium mb-2 sm:mb-4">
               👋 สวัสดีครับ, ผมชื่อ อานนท์
-            </div>
+            </div> */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-neutral-900 leading-[1.15]">
               สร้างสรรค์เว็บไซต์ <br className="hidden sm:block" />
               ด้วยความ <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-900">เรียบง่ายและทรงพลัง</span>
@@ -205,11 +205,11 @@ export default function Portfolio() {
               >
                 ดูผลงานของฉัน
               </button>
-              <div className="flex gap-3 sm:gap-4">
+              {/* <div className="flex gap-3 sm:gap-4">
                 <a href="#" className="p-3 sm:p-3.5 bg-white text-neutral-700 rounded-full shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 border border-neutral-100"><Github size={20} /></a>
                 <a href="#" className="p-3 sm:p-3.5 bg-white text-neutral-700 rounded-full shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 border border-neutral-100"><Linkedin size={20} /></a>
                 <a href="#" className="p-3 sm:p-3.5 bg-white text-neutral-700 rounded-full shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 border border-neutral-100"><Mail size={20} /></a>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -223,7 +223,7 @@ export default function Portfolio() {
           <div className="max-w-4xl mx-auto reveal">
             <div className="flex items-center gap-4 mb-10 sm:mb-12">
               <div className="p-3 bg-neutral-100 rounded-xl text-neutral-700"><User size={24} /></div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">เกี่ยวกับฉัน</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">About Me</h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-10 sm:gap-12 items-start">
@@ -261,7 +261,7 @@ export default function Portfolio() {
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center gap-4 mb-12 sm:mb-16 reveal">
               <div className="p-3 bg-white shadow-sm border border-neutral-100 rounded-xl text-neutral-700"><Briefcase size={24} /></div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">ประวัติการทำงาน</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Experience</h2>
             </div>
 
             <div className="space-y-10 sm:space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-neutral-300 before:to-transparent">
@@ -290,7 +290,7 @@ export default function Portfolio() {
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-4 mb-10 sm:mb-12 reveal">
               <div className="p-3 bg-neutral-100 rounded-xl text-neutral-700"><Code size={24} /></div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">ผลงานที่โดดเด่น</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Project</h2>
             </div>
 
             {/* Adjusted gap and grid for more breathing room */}
@@ -345,7 +345,7 @@ export default function Portfolio() {
             <p className="text-neutral-400 font-light text-base sm:text-lg px-4 sm:px-0">
               หากคุณกำลังมองหานักพัฒนาเว็บไซต์เพื่อสร้างสรรค์โปรเจกต์ต่อไปของคุณ สามารถติดต่อพูดคุยกันได้เลยครับ
             </p>
-            <a href="mailto:hello@example.com" className="inline-block px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-neutral-900 text-sm sm:text-base font-bold rounded-full hover:bg-neutral-200 transition-all hover:scale-105 shadow-lg shadow-white/10">
+            <a href="mailto:thanaphat_chan@hotmail.com" className="inline-block px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-neutral-900 text-sm sm:text-base font-bold rounded-full hover:bg-neutral-200 transition-all hover:scale-105 shadow-lg shadow-white/10">
               ส่งอีเมลหาฉัน
             </a>
           </div>
@@ -357,9 +357,12 @@ export default function Portfolio() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} DevPortfolio. All rights reserved.</p>
           <div className="flex gap-5 sm:gap-6">
-            <a href="#" className="hover:text-white transition-colors">Github</a>
-            <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-white transition-colors">Twitter</a>
+            {/* <a href="#" className="hover:text-white transition-colors">Github</a> */}
+            {/* <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+            <a href="#" className="hover:text-white transition-colors">Twitter</a> */}
+            <a href="tel:+66917701746" className="hover:text-white transition-colors">
+              +66 91 770 1746
+            </a>
           </div>
         </div>
       </footer>
