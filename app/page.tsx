@@ -8,27 +8,18 @@ import { Github, Linkedin, Mail, ChevronDown, ExternalLink, Briefcase, User, Cod
 const EXPERIENCES = [
   {
     id: 1,
-    role: "Web Developer",
-    company: "",
-    // period: "2023 - ปัจจุบัน",
-    period: "",
-    description: ""
+    role: "Mobile Application Developer",
+    company: "Magnitude plus Co., Ltd.",
+    period: "2025",
+    description: "ฝึกงานพัฒนาแอพพลิเคชันสั่งงาน/รับงานรถบรรทุก และเว็บไซต์ admin dashboard สำหรับใช้ในองค์กร ด้วย React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ร่วมมือกับเพื่อนๆในทีมเพื่อพัฒนาแอปพลิเคชันที่ตอบโจทย์ความต้องการของลูกค้า"
   },
   {
     id: 2,
-    role: "Mobile Application Developer",
-    company: "Magnitude plus Co., Ltd.",
-    // period: "2020 - 2023",
-    period: "",
-    description: "ฝึกงานพัฒนาแอพพลิเคชันสั่งงาน/รับงานรถบรรทุก และเว็บไซต์ admin dashboard สำหรับใช้ในองค์กร ด้วย React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ร่วมมือกับเพื่อนๆในทีมเพื่อพัฒนาแอปพลิเคชันที่ตอบโจทย์ความต้องการของลูกค้า"
-  },
-  // {
-  //   id: 3,
-  //   role: "Junior Software Engineer",
-  //   company: "StartUp Hub",
-  //   // period: "2018 - 2020",
-  //   description: "ร่วมพัฒนาแพลตฟอร์มจัดการทรัพยากรบุคคลด้วย Vue.js และ Node.js"
-  // }
+    role: "Web Developer",
+    company: "",
+    period: "2025 - 2026",
+    description: "โปรเจกต์จบ พัฒนาเว็บไซต์หางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี โดยใช้ React, JavaScript, Tailwind CSS, Node.js, Express และ MongoDB"
+  }
 ];
 
 const PROJECTS = [
@@ -70,7 +61,7 @@ const PROJECTS = [
   // }
 ];
 
-const SKILLS = ["JavaScript", "TypeScript", "React", "Next.js", "express.js", "Tailwind CSS", "MySQL", "Figma"];
+const SKILLS = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "React Native", "Next.js", "express.js", "Tailwind CSS", "MySQL", "Figma"];
 
 // --- Components ---
 
@@ -192,11 +183,11 @@ export default function Portfolio() {
               👋 สวัสดีครับ, ผมชื่อ อานนท์
             </div> */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-neutral-900 leading-[1.15]">
-              สร้างสรรค์เว็บไซต์ <br className="hidden sm:block" />
-              ด้วยความ <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-900">เรียบง่ายและทรงพลัง</span>
+              {/* สร้างสรรค์เว็บไซต์ <br className="hidden sm:block" /> */}
+              Hi, <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-900">I'm Thanaphat</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-light leading-relaxed px-4 sm:px-0">
-              ผมเป็นนักพัฒนา Frontend ที่หลงใหลในการเขียนโค้ดที่สะอาด และสร้างประสบการณ์ผู้ใช้ (UX) ที่ยอดเยี่ยม ปัจจุบันเชี่ยวชาญด้าน React และ Next.js
+             
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-6">
               <button
@@ -229,14 +220,14 @@ export default function Portfolio() {
             <div className="grid md:grid-cols-2 gap-10 sm:gap-12 items-start">
               <div className="space-y-5 sm:space-y-6 text-neutral-600 leading-relaxed font-light text-base sm:text-lg">
                 <p>
-                  ผมเริ่มต้นเส้นทางสายนักพัฒนาซอฟต์แวร์เมื่อ 5 ปีที่แล้ว ด้วยความหลงใหลในการแก้ปัญหาและการสร้างสิ่งใหม่ๆ จากบรรทัดโค้ด
+                  ผมนักศึกษาจบใหม่ สาขาวิทยาการคอมพิวเตอร์ที่มีความชื่นชอบในการพัฒนาเว็บไซต์และแอปพลิเคชันมือถือ ด้วยประสบการณ์การฝึกงานที่บริษัท Magnitude plus Co., Ltd. ผมได้มีโอกาสทำงานกับเทคโนโลยีต่างๆ เช่น React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ซึ่งช่วยให้ผมสามารถสร้างสรรค์โปรเจกต์ที่ตอบโจทย์ความต้องการของลูกค้าได้อย่างมีประสิทธิภาพ
                 </p>
-                <p>
+                {/* <p>
                   แนวคิดในการทำงานของผมคือ "Less is More" ผมเชื่อว่าโค้ดที่ดีควรจะอ่านง่าย บำรุงรักษาง่าย และ User Interface ควรจะใช้งานได้อย่างเป็นธรรมชาติโดยไม่ต้องมีคู่มือ
-                </p>
-                <p>
+                </p> */}
+                {/* <p>
                   เมื่อไม่ได้อยู่หน้าจอคอมพิวเตอร์ ผมมักจะใช้เวลาไปกับการถ่ายภาพ ดริปกาแฟ และอ่านหนังสือเกี่ยวกับการออกแบบ
-                </p>
+                </p> */}
               </div>
 
               <div className="reveal delay-100">
