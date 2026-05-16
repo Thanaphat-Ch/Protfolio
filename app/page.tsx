@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ChevronDown, ExternalLink, Briefcase, User, Code, Terminal, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronDown, ExternalLink, Briefcase, User, Code, Terminal, Menu, X, ImageIcon, ChevronRight, ChevronLeft } from 'lucide-react';
 
 // --- ข้อมูลจำลอง (Mock Data) ---
 
@@ -11,7 +11,7 @@ const EXPERIENCES = [
     role: "Mobile Application Developer",
     company: "Magnitude plus Co., Ltd.",
     period: "2025",
-    description: "ฝึกงานพัฒนาแอพพลิเคชันสั่งงาน/รับงานรถบรรทุก และเว็บไซต์ admin dashboard สำหรับใช้ในองค์กร ด้วย React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ร่วมมือกับเพื่อนๆในทีมเพื่อพัฒนาแอปพลิเคชันที่ตอบโจทย์ความต้องการของลูกค้า"
+    description: "ฝึกสหกิจพัฒนาแอพพลิเคชันสั่งงาน/รับงานรถบรรทุก และเว็บไซต์ admin dashboard สำหรับใช้ในองค์กร ด้วย React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ร่วมมือกับเพื่อนๆในทีมเพื่อพัฒนาแอปพลิเคชันที่ตอบโจทย์ความต้องการของลูกค้า"
   },
   {
     id: 2,
@@ -30,7 +30,12 @@ const PROJECTS = [
     image: "/freelancefreely.png",
     description: "แพลตฟอร์มหางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี",
     tech: ["React", "JavaScript", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    link: "https://freelancefreely.vercel.app/"
+    link: "https://freelancefreely.vercel.app/",
+    screenshots: [
+      "/freelancefreely.png",
+      "/Crop_Prediction_System.png",
+      "/maskdetection.png",
+    ],
   },
   {
     id: 2,
@@ -69,6 +74,8 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -114,6 +121,51 @@ export default function Portfolio() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  
+
+  const nextImage = () => {
+    if (!selectedProject) return;
+
+    setCurrentImage((prev) =>
+      prev === selectedProject.screenshots.length - 1
+        ? 0
+        : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    if (!selectedProject) return;
+
+    setCurrentImage((prev) =>
+      prev === 0
+        ? selectedProject.screenshots.length - 1
+        : prev - 1
+    );
+  };
+
+  useEffect(() => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (!selectedProject) return;
+
+    if (e.key === "Escape") {
+      setSelectedProject(null);
+    }
+
+    if (e.key === "ArrowRight") {
+      nextImage();
+    }
+
+    if (e.key === "ArrowLeft") {
+      prevImage();
+    }
+  };
+
+  window.addEventListener("keydown", handleKeyDown);
+
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown);
+  };
+}, [selectedProject]);
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white">
@@ -184,10 +236,10 @@ export default function Portfolio() {
             </div> */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-neutral-900 leading-[1.15]">
               {/* สร้างสรรค์เว็บไซต์ <br className="hidden sm:block" /> */}
-              Hi, <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-900">I'm Thanaphat</span>
+              Hi, <span className="text-transparent bg-clip-text bg-linear-to-r from-neutral-500 to-neutral-900">I&apos;m Thanaphat</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-light leading-relaxed px-4 sm:px-0">
-             
+
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-6">
               <button
@@ -220,7 +272,7 @@ export default function Portfolio() {
             <div className="grid md:grid-cols-2 gap-10 sm:gap-12 items-start">
               <div className="space-y-5 sm:space-y-6 text-neutral-600 leading-relaxed font-light text-base sm:text-lg">
                 <p>
-                  ผมนักศึกษาจบใหม่ สาขาวิทยาการคอมพิวเตอร์ที่มีความชื่นชอบในการพัฒนาเว็บไซต์และแอปพลิเคชันมือถือ ด้วยประสบการณ์การฝึกงานที่บริษัท Magnitude plus Co., Ltd. ผมได้มีโอกาสทำงานกับเทคโนโลยีต่างๆ เช่น React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ซึ่งช่วยให้ผมสามารถสร้างสรรค์โปรเจกต์ที่ตอบโจทย์ความต้องการของลูกค้าได้อย่างมีประสิทธิภาพ
+                  ผมนักศึกษาจบใหม่ สาขาวิทยาการคอมพิวเตอร์ที่มีความชื่นชอบในการพัฒนาเว็บไซต์และแอปพลิเคชันมือถือ ด้วยประสบการณ์การฝึกสหกิจที่บริษัท Magnitude plus Co., Ltd. ผมได้มีโอกาสทำงานกับเทคโนโลยีต่างๆ เช่น React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ซึ่งช่วยให้ผมสามารถสร้างสรรค์โปรเจกต์ที่ตอบโจทย์ความต้องการของลูกค้าได้อย่างมีประสิทธิภาพ
                 </p>
                 {/* <p>
                   แนวคิดในการทำงานของผมคือ "Less is More" ผมเชื่อว่าโค้ดที่ดีควรจะอ่านง่าย บำรุงรักษาง่าย และ User Interface ควรจะใช้งานได้อย่างเป็นธรรมชาติโดยไม่ต้องมีคู่มือ
@@ -306,9 +358,32 @@ export default function Portfolio() {
                   <div className="p-5 flex-1 flex flex-col bg-white">
                     <div className="flex justify-between items-start mb-3 sm:mb-4">
                       <h3 className="font-bold text-lg text-neutral-900 group-hover:text-neutral-600 transition-colors">{project.title}</h3>
-                      <a href={project.link} className="text-neutral-400 hover:text-neutral-900 transition-colors">
+                      {/* <a href={project.link} className="text-neutral-400 hover:text-neutral-900 transition-colors">
                         <ExternalLink size={18} />
-                      </a>
+                      </a> */}
+                      <div className='flex gap-2'>
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-neutral-400 hover:text-neutral-900 transition-colors"
+                        >
+                          <ExternalLink size={18} />
+                        </a>
+
+                        {/* เปิด modal preview */}
+                        {project.screenshots && (
+                          <button
+                            onClick={() => {
+                              setSelectedProject(project);
+                              setCurrentImage(0);
+                            }}
+                            className="text-neutral-400 hover:text-neutral-900 transition-colors"
+                          >
+                            <ImageIcon size={18} />
+                          </button>
+                        )}
+                      </div>
                     </div>
 
                     <p className="text-neutral-600 text-xs sm:text-sm mb-5 sm:mb-6 flex-1 font-light leading-relaxed">
@@ -357,6 +432,68 @@ export default function Portfolio() {
           </div>
         </div>
       </footer>
+
+      {selectedProject && (
+        <div
+          className="fixed inset-0 z-[999] bg-black/90 flex flex-col"
+        >
+
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 md:p-6 text-white">
+
+            <div>
+              <h2 className="text-lg md:text-2xl font-semibold">
+                {selectedProject.title}
+              </h2>
+
+              <p className="text-white/60 text-sm mt-1">
+                {currentImage + 1} / {selectedProject.screenshots.length}
+              </p>
+            </div>
+
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="hover:text-white/70 transition"
+            >
+              <X size={32} />
+            </button>
+          </div>
+
+          {/* Image Area */}
+          <div className="flex-1 flex items-center justify-center relative px-4 pb-6">
+
+            {/* Left */}
+            <button
+              onClick={prevImage}
+              className="absolute left-2 md:left-6 z-10 bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 rounded-full transition"
+            >
+              <ChevronLeft size={28} />
+            </button>
+
+            {/* Image */}
+            <img
+              src={selectedProject.screenshots[currentImage]}
+              alt=""
+              className="
+          max-w-full lg:max-w-[80%]
+          max-h-full
+          object-contain
+          rounded-xl
+          shadow-2xl
+        "
+            />
+
+            {/* Right */}
+            <button
+              onClick={nextImage}
+              className="absolute right-2 md:right-6 z-10 bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 rounded-full transition"
+            >
+              <ChevronRight size={28} />
+            </button>
+
+          </div>
+        </div>
+      )}
 
       {/* Added styles for Scroll Reveal Animations */}
       <style dangerouslySetInnerHTML={{
