@@ -1,7 +1,8 @@
-"use client";
+"use client"
 
-import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, ChevronDown, ExternalLink, Briefcase, User, Code, Terminal, Menu, X, ImageIcon, ChevronRight, ChevronLeft } from 'lucide-react';
+import React, { useState, useEffect } from "react"
+import { ChevronDown, ExternalLink, Briefcase, User, Code, Terminal, Menu, X, ImageIcon, ChevronRight, ChevronLeft } from "lucide-react"
+import Image from "next/image"
 
 // --- ข้อมูลจำลอง (Mock Data) ---
 
@@ -11,16 +12,16 @@ const EXPERIENCES = [
     role: "Mobile Application Developer",
     company: "Magnitude plus Co., Ltd.",
     period: "2025",
-    description: "ฝึกสหกิจพัฒนาแอพพลิเคชันสั่งงาน/รับงานรถบรรทุก และเว็บไซต์ admin dashboard สำหรับใช้ในองค์กร ด้วย React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ร่วมมือกับเพื่อนๆในทีมเพื่อพัฒนาแอปพลิเคชันที่ตอบโจทย์ความต้องการของลูกค้า"
+    description: "ฝึกสหกิจพัฒนาแอพพลิเคชันสั่งงาน/รับงานรถบรรทุก และเว็บไซต์ admin dashboard สำหรับใช้ในองค์กร ด้วย React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ร่วมมือกับเพื่อนๆในทีมเพื่อพัฒนาแอปพลิเคชันที่ตอบโจทย์ความต้องการของลูกค้า",
   },
   {
     id: 2,
     role: "Web Developer",
     company: "",
     period: "2025 - 2026",
-    description: "โปรเจกต์จบ พัฒนาเว็บไซต์หางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี โดยใช้ React, JavaScript, Tailwind CSS, Node.js, Express และ MongoDB"
-  }
-];
+    description: "โปรเจกต์จบ พัฒนาเว็บไซต์หางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี โดยใช้ React, JavaScript, Tailwind CSS, Node.js, Express และ MongoDB",
+  },
+]
 
 const PROJECTS = [
   {
@@ -31,13 +32,7 @@ const PROJECTS = [
     description: "แพลตฟอร์มหางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี",
     tech: ["React", "JavaScript", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
     link: "https://freelancefreely.vercel.app/",
-    screenshots: [
-      "freelancefreely/1.png",
-      "freelancefreely/2.png",
-      "freelancefreely/3.png",
-      "freelancefreely/4.png",
-      "freelancefreely/5.png",
-    ],
+    screenshots: ["freelancefreely/1.png", "freelancefreely/2.png", "freelancefreely/3.png", "freelancefreely/4.png", "freelancefreely/5.png"],
   },
   {
     id: 2,
@@ -46,7 +41,7 @@ const PROJECTS = [
     image: "/Crop_Prediction_System.png",
     description: "ระบบ AI คาดการณ์พืชที่เหมาะสมต่อการเพาะปลูกของแต่ละพื้นที่ โดยใช้ AI วิธี Decision Tree และข้อมูลสภาพอากาศและดินจากแหล่งข้อมูลภายนอก",
     tech: ["Python", "Streamlit"],
-    link: "https://crop-prediction-system.streamlit.app/"
+    link: "https://crop-prediction-system.streamlit.app/",
   },
   {
     id: 3,
@@ -55,7 +50,7 @@ const PROJECTS = [
     image: "/Mask_Detection_System.png",
     description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
     tech: ["HTML", "JavaScript", "TensorFlow.js"],
-    link: "https://thanaphat-ch.github.io/maskDetection/"
+    link: "https://thanaphat-ch.github.io/maskDetection/",
   },
   // {
   //   id: 4,
@@ -66,163 +61,139 @@ const PROJECTS = [
   //   tech: ["JavaScript", "TensorFlow.js", "YOLOv5"],
   //   link: "https://thanaphat-ch.github.io/maskDetection/"
   // }
-];
+]
 
-const SKILLS = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "React Native", "Next.js", "express.js", "Tailwind CSS", "MySQL", "Figma"];
+const SKILLS = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "React Native", "Next.js", "express.js", "Tailwind CSS", "MySQL", "Figma"]
 
 // --- Components ---
 
 export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState('home');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<any>(null);
-  const [currentImage, setCurrentImage] = useState(0);
+  const [activeSection, setActiveSection] = useState("home")
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<any>(null)
+  const [currentImage, setCurrentImage] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 50)
 
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'experience', 'portfolios'];
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
+      const sections = ["home", "about", "experience", "portfolios"]
+      const current = sections.find((section) => {
+        const element = document.getElementById(section)
         if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top >= -100 && rect.top <= 300;
+          const rect = element.getBoundingClientRect()
+          return rect.top >= -100 && rect.top <= 300
         }
-        return false;
-      });
+        return false
+      })
 
-      if (current) setActiveSection(current);
-    };
+      if (current) setActiveSection(current)
+    }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll)
 
     // Setup Intersection Observer for scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active")
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    )
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el))
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+      observer.disconnect()
+    }
+  }, [])
 
   const scrollTo = (id: string) => {
-    setIsMobileMenuOpen(false);
-    const element = document.getElementById(id);
+    setIsMobileMenuOpen(false)
+    const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" })
     }
-  };
-  
+  }
 
   const nextImage = () => {
-    if (!selectedProject) return;
+    if (!selectedProject) return
 
-    setCurrentImage((prev) =>
-      prev === selectedProject.screenshots.length - 1
-        ? 0
-        : prev + 1
-    );
-  };
+    setCurrentImage((prev) => (prev === selectedProject.screenshots.length - 1 ? 0 : prev + 1))
+  }
 
   const prevImage = () => {
-    if (!selectedProject) return;
+    if (!selectedProject) return
 
-    setCurrentImage((prev) =>
-      prev === 0
-        ? selectedProject.screenshots.length - 1
-        : prev - 1
-    );
-  };
+    setCurrentImage((prev) => (prev === 0 ? selectedProject.screenshots.length - 1 : prev - 1))
+  }
 
   useEffect(() => {
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (!selectedProject) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedProject) return
 
-    if (e.key === "Escape") {
-      setSelectedProject(null);
+      if (e.key === "Escape") {
+        setSelectedProject(null)
+      }
+
+      if (e.key === "ArrowRight") {
+        nextImage()
+      }
+
+      if (e.key === "ArrowLeft") {
+        prevImage()
+      }
     }
 
-    if (e.key === "ArrowRight") {
-      nextImage();
+    window.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
     }
-
-    if (e.key === "ArrowLeft") {
-      prevImage();
-    }
-  };
-
-  window.addEventListener("keydown", handleKeyDown);
-
-  return () => {
-    window.removeEventListener("keydown", handleKeyDown);
-  };
-}, [selectedProject]);
+  }, [selectedProject])
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white">
-
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5 md:py-6'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5 md:py-6"}`}>
         <div className="container mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center max-w-10xl">
-          <div className="text-xl font-bold tracking-tighter cursor-pointer" onClick={() => scrollTo('home')}>
+          <div className="text-xl font-bold tracking-tighter cursor-pointer" onClick={() => scrollTo("home")}>
             THANAPHAT.<span className="text-neutral-400">CH</span>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 text-sm font-medium text-neutral-500">
-            {['About', 'Experience', 'Projects'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollTo(item.toLowerCase())}
-                className={`transition-colors hover:text-neutral-900 ${activeSection === item.toLowerCase() ? 'text-neutral-900' : ''}`}
-              >
+            {["About", "Experience", "Projects"].map((item) => (
+              <button key={item} onClick={() => scrollTo(item.toLowerCase())} className={`transition-colors hover:text-neutral-900 ${activeSection === item.toLowerCase() ? "text-neutral-900" : ""}`}>
                 {item}
               </button>
             ))}
           </div>
-          <button
-            onClick={() => scrollTo('contact')}
-            className="hidden md:block px-5 py-2 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
-          >
+          <button onClick={() => scrollTo("contact")} className="hidden md:block px-5 py-2 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors">
             ติดต่อฉัน
           </button>
 
           {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden text-neutral-600 hover:text-neutral-900"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
+          <button className="md:hidden text-neutral-600 hover:text-neutral-900" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Menu Dropdown */}
-        <div className={`md:hidden absolute top-full left-0 w-full bg-white shadow-lg transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-64 py-4 border-t border-neutral-100' : 'max-h-0 py-0'}`}>
+        <div className={`md:hidden absolute top-full left-0 w-full bg-white shadow-lg transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? "max-h-64 py-4 border-t border-neutral-100" : "max-h-0 py-0"}`}>
           <div className="flex flex-col space-y-4 px-6">
-            {['About', 'Experience', 'Projects'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollTo(item.toLowerCase())}
-                className={`text-left font-medium text-neutral-600 hover:text-neutral-900 ${activeSection === item.toLowerCase() ? 'text-neutral-900' : ''}`}
-              >
+            {["About", "Experience", "Projects"].map((item) => (
+              <button key={item} onClick={() => scrollTo(item.toLowerCase())} className={`text-left font-medium text-neutral-600 hover:text-neutral-900 ${activeSection === item.toLowerCase() ? "text-neutral-900" : ""}`}>
                 {item}
               </button>
             ))}
-            <button
-              onClick={() => scrollTo('contact')}
-              className="w-full text-center px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-neutral-800 transition-colors mt-2"
-            >
+            <button onClick={() => scrollTo("contact")} className="w-full text-center px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-neutral-800 transition-colors mt-2">
               ติดต่อฉัน
             </button>
           </div>
@@ -240,14 +211,9 @@ export default function Portfolio() {
               {/* สร้างสรรค์เว็บไซต์ <br className="hidden sm:block" /> */}
               Hi, <span className="text-transparent bg-clip-text bg-linear-to-r from-neutral-500 to-neutral-900">I&apos;m Thanaphat</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-light leading-relaxed px-4 sm:px-0">
-
-            </p>
+            <p className="text-base sm:text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-light leading-relaxed px-4 sm:px-0"></p>
             <div className="flex flex-wrap justify-center gap-4 pt-6">
-              <button
-                onClick={() => scrollTo('projects')}
-                className="px-6 sm:px-8 py-3 sm:py-3.5 bg-neutral-900 text-white text-sm sm:text-base font-medium rounded-full hover:bg-neutral-800 transition-all hover:shadow-lg hover:-translate-y-0.5"
-              >
+              <button onClick={() => scrollTo("projects")} className="px-6 sm:px-8 py-3 sm:py-3.5 bg-neutral-900 text-white text-sm sm:text-base font-medium rounded-full hover:bg-neutral-800 transition-all hover:shadow-lg hover:-translate-y-0.5">
                 ดูผลงานของฉัน
               </button>
               {/* <div className="flex gap-3 sm:gap-4">
@@ -258,7 +224,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-neutral-400 cursor-pointer p-4" onClick={() => scrollTo('about')}>
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-neutral-400 cursor-pointer p-4" onClick={() => scrollTo("about")}>
             <ChevronDown size={24} />
           </div>
         </section>
@@ -267,14 +233,17 @@ export default function Portfolio() {
         <section id="about" className="py-20 sm:py-24 px-6 sm:px-12 lg:px-20 bg-white">
           <div className="max-w-4xl mx-auto reveal">
             <div className="flex items-center gap-4 mb-10 sm:mb-12">
-              <div className="p-3 bg-neutral-100 rounded-xl text-neutral-700"><User size={24} /></div>
+              <div className="p-3 bg-neutral-100 rounded-xl text-neutral-700">
+                <User size={24} />
+              </div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">About Me</h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-10 sm:gap-12 items-start">
               <div className="space-y-5 sm:space-y-6 text-neutral-600 leading-relaxed font-light text-base sm:text-lg">
                 <p>
-                  ผมนักศึกษาจบใหม่ สาขาวิทยาการคอมพิวเตอร์ที่มีความชื่นชอบในการพัฒนาเว็บไซต์และแอปพลิเคชันมือถือ ด้วยประสบการณ์การฝึกสหกิจที่บริษัท Magnitude plus Co., Ltd. ผมได้มีโอกาสทำงานกับเทคโนโลยีต่างๆ เช่น React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ซึ่งช่วยให้ผมสามารถสร้างสรรค์โปรเจกต์ที่ตอบโจทย์ความต้องการของลูกค้าได้อย่างมีประสิทธิภาพ
+                  ผมนักศึกษาจบใหม่ สาขาวิทยาการคอมพิวเตอร์ที่มีความชื่นชอบในการพัฒนาเว็บไซต์และแอปพลิเคชันมือถือ ด้วยประสบการณ์การฝึกสหกิจที่บริษัท Magnitude plus Co., Ltd. ผมได้มีโอกาสทำงานกับเทคโนโลยีต่างๆ เช่น React.js, Tailwind CSS, React Native, Node.js, express และ MySQL
+                  ซึ่งช่วยให้ผมสามารถสร้างสรรค์โปรเจกต์ที่ตอบโจทย์ความต้องการของลูกค้าได้อย่างมีประสิทธิภาพ
                 </p>
                 {/* <p>
                   แนวคิดในการทำงานของผมคือ "Less is More" ผมเชื่อว่าโค้ดที่ดีควรจะอ่านง่าย บำรุงรักษาง่าย และ User Interface ควรจะใช้งานได้อย่างเป็นธรรมชาติโดยไม่ต้องมีคู่มือ
@@ -290,7 +259,7 @@ export default function Portfolio() {
                   ทักษะและความเชี่ยวชาญ
                 </h3>
                 <div className="flex flex-wrap gap-2.5 sm:gap-3">
-                  {SKILLS.map(skill => (
+                  {SKILLS.map((skill) => (
                     <span key={skill} className="px-3 sm:px-4 py-1.5 sm:py-2 bg-neutral-50 border border-neutral-200 text-neutral-700 rounded-lg text-xs sm:text-sm font-medium hover:border-neutral-400 transition-colors cursor-default">
                       {skill}
                     </span>
@@ -305,11 +274,13 @@ export default function Portfolio() {
         <section id="experience" className="py-20 sm:py-24 px-6 sm:px-12 lg:px-20 bg-neutral-50">
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center gap-4 mb-12 sm:mb-16 reveal">
-              <div className="p-3 bg-white shadow-sm border border-neutral-100 rounded-xl text-neutral-700"><Briefcase size={24} /></div>
+              <div className="p-3 bg-white shadow-sm border border-neutral-100 rounded-xl text-neutral-700">
+                <Briefcase size={24} />
+              </div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Experience</h2>
             </div>
 
-            <div className="space-y-10 sm:space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-neutral-300 before:to-transparent">
+            <div className="space-y-10 sm:space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-neutral-300 before:to-transparent">
               {EXPERIENCES.map((exp, index) => (
                 <div key={exp.id} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active reveal" style={{ transitionDelay: `${index * 150}ms` }}>
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-neutral-50 bg-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
@@ -334,7 +305,9 @@ export default function Portfolio() {
         <section id="projects" className="py-20 sm:py-24 px-6 sm:px-12 lg:px-20 bg-white">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-4 mb-10 sm:mb-12 reveal">
-              <div className="p-3 bg-neutral-100 rounded-xl text-neutral-700"><Code size={24} /></div>
+              <div className="p-3 bg-neutral-100 rounded-xl text-neutral-700">
+                <Code size={24} />
+              </div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Project</h2>
             </div>
 
@@ -344,15 +317,9 @@ export default function Portfolio() {
                 <div key={project.id} className="group rounded-2xl bg-neutral-50 border border-neutral-100 overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col reveal" style={{ transitionDelay: `${index * 150}ms` }}>
                   {/* Reduced image height slightly (h-40) */}
                   <div className="relative h-40 sm:h-44 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+                    <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-                      <span className="px-2.5 py-1 bg-white/95 backdrop-blur-sm text-neutral-800 text-[10px] sm:text-xs font-semibold rounded-full shadow-sm">
-                        {project.category}
-                      </span>
+                      <span className="px-2.5 py-1 bg-white/95 backdrop-blur-sm text-neutral-800 text-[10px] sm:text-xs font-semibold rounded-full shadow-sm">{project.category}</span>
                     </div>
                   </div>
 
@@ -363,13 +330,8 @@ export default function Portfolio() {
                       {/* <a href={project.link} className="text-neutral-400 hover:text-neutral-900 transition-colors">
                         <ExternalLink size={18} />
                       </a> */}
-                      <div className='flex gap-2'>
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-neutral-400 hover:text-neutral-900 transition-colors"
-                        >
+                      <div className="flex gap-2">
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-neutral-900 transition-colors">
                           <ExternalLink size={18} />
                         </a>
 
@@ -377,8 +339,8 @@ export default function Portfolio() {
                         {project.screenshots && (
                           <button
                             onClick={() => {
-                              setSelectedProject(project);
-                              setCurrentImage(0);
+                              setSelectedProject(project)
+                              setCurrentImage(0)
                             }}
                             className="text-neutral-400 hover:text-neutral-900 transition-colors"
                           >
@@ -388,12 +350,10 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    <p className="text-neutral-600 text-xs sm:text-sm mb-5 sm:mb-6 flex-1 font-light leading-relaxed">
-                      {project.description}
-                    </p>
+                    <p className="text-neutral-600 text-xs sm:text-sm mb-5 sm:mb-6 flex-1 font-light leading-relaxed">{project.description}</p>
 
                     <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto">
-                      {project.tech.map(t => (
+                      {project.tech.map((t) => (
                         <span key={t} className="text-[10px] sm:text-xs font-medium text-neutral-500 bg-neutral-50 border border-neutral-200 px-2 py-1 rounded-md">
                           {t}
                         </span>
@@ -410,9 +370,7 @@ export default function Portfolio() {
         <section id="contact" className="py-20 sm:py-24 px-6 bg-neutral-900 text-white text-center">
           <div className="max-w-2xl mx-auto space-y-6 sm:space-y-8 reveal">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">พร้อมที่จะร่วมงานด้วยกันหรือยัง?</h2>
-            <p className="text-neutral-400 font-light text-base sm:text-lg px-4 sm:px-0">
-              หากคุณกำลังมองหานักพัฒนาเว็บไซต์เพื่อสร้างสรรค์โปรเจกต์ต่อไปของคุณ สามารถติดต่อพูดคุยกันได้เลยครับ
-            </p>
+            <p className="text-neutral-400 font-light text-base sm:text-lg px-4 sm:px-0">หากคุณกำลังมองหานักพัฒนาเว็บไซต์เพื่อสร้างสรรค์โปรเจกต์ต่อไปของคุณ สามารถติดต่อพูดคุยกันได้เลยครับ</p>
             <a href="mailto:thanaphat_chan@hotmail.com" className="inline-block px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-neutral-900 text-sm sm:text-base font-bold rounded-full hover:bg-neutral-200 transition-all hover:scale-105 shadow-lg shadow-white/10">
               ส่งอีเมลหาฉัน
             </a>
@@ -436,70 +394,53 @@ export default function Portfolio() {
       </footer>
 
       {selectedProject && (
-        <div
-          className="fixed inset-0 z-[999] bg-black/90 flex flex-col"
-        >
-
+        <div className="fixed inset-0 z-999 bg-black/90 flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between p-4 md:p-6 text-white">
-
             <div>
-              <h2 className="text-lg md:text-2xl font-semibold">
-                {selectedProject.title}
-              </h2>
+              <h2 className="text-lg md:text-2xl font-semibold">{selectedProject.title}</h2>
 
               <p className="text-white/60 text-sm mt-1">
                 {currentImage + 1} / {selectedProject.screenshots.length}
               </p>
             </div>
 
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="hover:text-white/70 transition"
-            >
+            <button onClick={() => setSelectedProject(null)} className="hover:text-white/70 transition">
               <X size={32} />
             </button>
           </div>
 
           {/* Image Area */}
           <div className="flex-1 flex items-center justify-center relative px-4 pb-6">
-
             {/* Left */}
-            <button
-              onClick={prevImage}
-              className="absolute left-2 md:left-6 z-10 bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 rounded-full transition"
-            >
+            <button onClick={prevImage} className="absolute left-2 md:left-6 z-10 bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 rounded-full transition">
               <ChevronLeft size={28} />
             </button>
-
-            {/* Image */}
-            <img
+            <Image
               src={selectedProject.screenshots[currentImage]}
               alt=""
+              width={1200}
+              height={800}
               className="
-          max-w-full lg:max-w-[80%]
-          max-h-full
-          object-contain
-          rounded-xl
-          shadow-2xl
-        "
+                max-w-full lg:max-w-[80%]
+                max-h-full
+                object-contain
+                rounded-xl
+                shadow-2xl
+              "
             />
-
             {/* Right */}
-            <button
-              onClick={nextImage}
-              className="absolute right-2 md:right-6 z-10 bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 rounded-full transition"
-            >
+            <button onClick={nextImage} className="absolute right-2 md:right-6 z-10 bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 rounded-full transition">
               <ChevronRight size={28} />
             </button>
-
           </div>
         </div>
       )}
 
       {/* Added styles for Scroll Reveal Animations */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
@@ -521,7 +462,9 @@ export default function Portfolio() {
         .delay-100 {
           transition-delay: 100ms;
         }
-      `}} />
+      `,
+        }}
+      />
     </div>
-  );
+  )
 }
