@@ -1,3 +1,5 @@
+import { IconType } from "react-icons/lib";
+
 // types.ts
 export type Experience = {
   id: number
@@ -23,5 +25,11 @@ export type Project = {
 export type PortfolioProps = {
   experiences: Experience[]
   projects: Project[]
-  skills: string[]
+  skills: Skill[]
+}
+
+export type Skill = {
+  name: string;
+  icon: IconType;
+  color: string;
 }

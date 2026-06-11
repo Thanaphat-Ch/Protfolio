@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { ChevronDown, ExternalLink, Briefcase, User, Code, Terminal, Menu, X, ImageIcon, ChevronRight, ChevronLeft } from "lucide-react"
+import { ChevronDown, ExternalLink, Briefcase, User, Code, Terminal, Menu, X, ImageIcon, ChevronRight, ChevronLeft, Github, Phone, Mail } from "lucide-react"
 import Image from "next/image"
 import { SKILLS, EXPERIENCES, PROJECTS } from "@/data/content"
 import { IconType } from "react-icons"
@@ -145,26 +145,79 @@ export default function Portfolio() {
 
       <main>
         {/* Hero Section */}
-        <section id="home" className="min-h-screen flex flex-col justify-center items-center pt-24 pb-12 px-6 sm:px-10 lg:px-20 relative">
-          <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 animate-fade-in-up">
-            {/* <div className="inline-block px-3 py-1.5 rounded-full bg-neutral-200/50 text-neutral-600 text-xs sm:text-sm font-medium mb-2 sm:mb-4">
-              👋 สวัสดีครับ, ผมชื่อ อานนท์
-            </div> */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-neutral-900 leading-[1.15]">
-              {/* สร้างสรรค์เว็บไซต์ <br className="hidden sm:block" /> */}
-              Hi, <span className="text-transparent bg-clip-text bg-linear-to-r from-neutral-500 to-neutral-900">I&apos;m Thanaphat</span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto font-light leading-relaxed px-4 sm:px-0"></p>
-            <div className="flex flex-wrap justify-center gap-4 pt-6">
-              <button onClick={() => scrollTo("projects")} className="px-6 sm:px-8 py-3 sm:py-3.5 bg-neutral-900 text-white text-sm sm:text-base font-medium rounded-full hover:bg-neutral-800 transition-all hover:shadow-lg hover:-translate-y-0.5">
-                ดูผลงานของฉัน
-              </button>
-              {/* <div className="flex gap-3 sm:gap-4">
-                <a href="#" className="p-3 sm:p-3.5 bg-white text-neutral-700 rounded-full shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 border border-neutral-100"><Github size={20} /></a>
-                <a href="#" className="p-3 sm:p-3.5 bg-white text-neutral-700 rounded-full shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 border border-neutral-100"><Linkedin size={20} /></a>
-                <a href="#" className="p-3 sm:p-3.5 bg-white text-neutral-700 rounded-full shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 border border-neutral-100"><Mail size={20} /></a>
-              </div> */}
+        <section id="home" className="min-h-screen flex flex-col justify-center items-center pt-24 pb-12 px-6 sm:px-10 lg:px-20 relative bg-neutral-50">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center animate-fade-in-up w-full">
+
+            {/* ฝั่งซ้าย: ข้อความต้อนรับและกลุ่มปุ่มติดต่อสื่อสารตามภาพ image_2c73d9.png */}
+            <div className="text-left space-y-6">
+              
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-neutral-900 leading-[1.15]">
+                Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-900">Thanaphat</span>
+              </h1>
+              <p className="text-base sm:text-lg text-neutral-500 max-w-md font-light leading-relaxed">
+                นักพัฒนา Web & Mobile Application ที่ชื่นชอบการเขียนโค้ดให้คลีน มินิมอล และใช้งานได้จริง
+              </p>
+
+              {/* กลุ่มกลุ่มปุ่มสไตล์มินิมอลตามภาพตัวอย่าง */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                {/* ปุ่ม GitHub (วงกลม) */}
+                <a
+                  href="https://github.com/thanaphat-ch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center bg-neutral-200/60 text-neutral-700 rounded-full hover:bg-neutral-900 hover:text-white transition-all shadow-xs"
+                  title="GitHub"
+                >
+                  <Github size={18} />
+                </a>
+
+                {/* ปุ่มเบอร์โทรศัพท์ Tel (วงกลม) */}
+                <a
+                  href="tel:+66917701746"
+                  className="w-10 h-10 flex items-center justify-center bg-neutral-200/60 text-neutral-700 rounded-full hover:bg-neutral-900 hover:text-white transition-all shadow-xs"
+                  title="โทรหาฉัน"
+                >
+                  <Phone size={18} />
+                </a>
+
+                {/* ปุ่มส่งอีเมล Mail (ปุ่มแคปซูลยาวสไตล์ Email ในรูปภาพ) */}
+                <a
+                  href="mailto:thanaphat.chn@gmail.com"
+                  className="px-5 py-2.5 flex items-center gap-2 bg-neutral-200/60 text-neutral-700 text-sm font-medium rounded-full hover:bg-neutral-900 hover:text-white transition-all shadow-xs"
+                >
+                  <Mail size={16} />
+                  <span>Email Me</span>
+                </a>
+
+                {/* ปุ่มกดดูผลงาน (ปุ่มแคปซูลยาวสไตล์ Website ในรูปภาพ) */}
+                <button
+                  onClick={() => scrollTo("projects")}
+                  className="px-5 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-all shadow-md"
+                >
+                  View Projects
+                </button>
+              </div>
             </div>
+
+            {/* ฝั่งขวา: หน้าต่าง Terminal จำลอง */}
+            <div className="w-full max-w-md mx-auto aspect-video rounded-2xl bg-neutral-900 shadow-2xl border border-neutral-800 p-4 font-mono text-xs sm:text-sm text-neutral-400 flex flex-col justify-between">
+              <div className="flex items-center gap-1.5 border-b border-neutral-800 pb-3 mb-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                <span className="text-neutral-600 text-xs ml-2">thanaphat.ts</span>
+              </div>
+              <div className="flex-1 space-y-2 pt-2">
+                <p className="text-neutral-500">{"//" + " Current tech stack"}</p>
+                <p><span className="text-pink-500">const</span> developer = {"{"}</p>
+                <p className="pl-4">name: <span className="text-amber-300">&apos;Thanaphat&apos;</span>,</p>
+                <p className="pl-4">role: <span className="text-amber-300">&apos;Full Stack Developer&apos;</span>,</p>
+                <p className="pl-4">focus: <span className="text-amber-300">[&apos;React&apos;, &apos;React Native&apos;, &apos;Next.js&apos;]</span></p>
+                <p>{"};"}</p>
+                <p className="text-neutral-500 animate-pulse">| </p>
+              </div>
+            </div>
+
           </div>
 
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-neutral-400 cursor-pointer p-4" onClick={() => scrollTo("about")}>
