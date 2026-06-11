@@ -3,67 +3,10 @@
 import React, { useState, useEffect } from "react"
 import { ChevronDown, ExternalLink, Briefcase, User, Code, Terminal, Menu, X, ImageIcon, ChevronRight, ChevronLeft } from "lucide-react"
 import Image from "next/image"
+import { SKILLS, EXPERIENCES, PROJECTS } from "@/data/content"
+import { IconType } from "react-icons"
 
-// --- ข้อมูลจำลอง (Mock Data) ---
 
-const EXPERIENCES = [
-  {
-    id: 1,
-    role: "Mobile Application Developer",
-    company: "Magnitude plus Co., Ltd.",
-    period: "2025",
-    description: "ฝึกสหกิจพัฒนาแอพพลิเคชันสั่งงาน/รับงานรถบรรทุก และเว็บไซต์ admin dashboard สำหรับใช้ในองค์กร ด้วย React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ร่วมมือกับเพื่อนๆในทีมเพื่อพัฒนาแอปพลิเคชันที่ตอบโจทย์ความต้องการของลูกค้า",
-  },
-  {
-    id: 2,
-    role: "Web Developer",
-    company: "",
-    period: "2025 - 2026",
-    description: "โปรเจกต์จบ พัฒนาเว็บไซต์หางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี โดยใช้ React, JavaScript, Tailwind CSS, Node.js, Express และ MongoDB",
-  },
-]
-
-const PROJECTS = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    category: "Web Application",
-    image: "freelancefreely/freelancefreely.png",
-    description: "แพลตฟอร์มหางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี",
-    tech: ["React", "JavaScript", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    link: "https://freelancefreely.vercel.app/",
-    screenshots: ["freelancefreely/1.png", "freelancefreely/2.png", "freelancefreely/3.png", "freelancefreely/4.png", "freelancefreely/5.png"],
-  },
-  {
-    id: 2,
-    title: "AI Crop Prediction System",
-    category: "AI / Data Science",
-    image: "/Crop_Prediction_System.png",
-    description: "ระบบ AI คาดการณ์พืชที่เหมาะสมต่อการเพาะปลูกของแต่ละพื้นที่ โดยใช้ AI วิธี Decision Tree และข้อมูลสภาพอากาศและดินจากแหล่งข้อมูลภายนอก",
-    tech: ["Python", "Streamlit"],
-    link: "https://crop-prediction-system.streamlit.app/",
-  },
-  {
-    id: 3,
-    title: "Mask Detection System",
-    category: "AI / Computer Vision",
-    image: "/Mask_Detection_System.png",
-    description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
-    tech: ["HTML", "JavaScript", "TensorFlow.js"],
-    link: "https://thanaphat-ch.github.io/maskDetection/",
-  },
-  // {
-  //   id: 4,
-  //   title: "Mask Detection System",
-  //   category: "AI / Computer Vision",
-  //   image: "/Mask_Detection_System.png",
-  //   description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
-  //   tech: ["JavaScript", "TensorFlow.js", "YOLOv5"],
-  //   link: "https://thanaphat-ch.github.io/maskDetection/"
-  // }
-]
-
-const SKILLS = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "React Native", "Next.js", "express.js", "Tailwind CSS", "MySQL", "Figma"]
 
 // --- Components ---
 
@@ -259,11 +202,18 @@ export default function Portfolio() {
                   ทักษะและความเชี่ยวชาญ
                 </h3>
                 <div className="flex flex-wrap gap-2.5 sm:gap-3">
-                  {SKILLS.map((skill) => (
-                    <span key={skill} className="px-3 sm:px-4 py-1.5 sm:py-2 bg-neutral-50 border border-neutral-200 text-neutral-700 rounded-lg text-xs sm:text-sm font-medium hover:border-neutral-400 transition-colors cursor-default">
-                      {skill}
-                    </span>
-                  ))}
+                  {SKILLS.map((skill) => {
+                    const IconComponent: React.FC<{ className?: string }> = skill.icon;
+                    return (
+                      <span
+                        key={skill.name}
+                        className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-neutral-50 border border-neutral-200 text-neutral-700 rounded-lg text-xs sm:text-sm font-medium hover:border-neutral-400 hover:bg-neutral-100/50 transition-all cursor-default"
+                      >
+                        <IconComponent className={`text-base sm:text-lg ${skill.color}`} />
+                        {skill.name}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -317,7 +267,7 @@ export default function Portfolio() {
                 <div key={project.id} className="group rounded-2xl bg-neutral-50 border border-neutral-100 overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col reveal" style={{ transitionDelay: `${index * 150}ms` }}>
                   {/* Reduced image height slightly (h-40) */}
                   <div className="relative h-40 sm:h-44 overflow-hidden">
-                    <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
                       <span className="px-2.5 py-1 bg-white/95 backdrop-blur-sm text-neutral-800 text-[10px] sm:text-xs font-semibold rounded-full shadow-sm">{project.category}</span>
                     </div>
