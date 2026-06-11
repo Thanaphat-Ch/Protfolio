@@ -1,3 +1,5 @@
+'use client'
+
 import type { Experience, Project, Skill } from "@/types";
 import { SiHtml5, SiCss, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiTailwindcss, SiExpress, SiMysql, SiFigma } from "react-icons/si"
 

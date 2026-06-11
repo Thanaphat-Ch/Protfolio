@@ -2,13 +2,13 @@
 
 import React from "react"
 import { ChevronDown, ExternalLink, Briefcase, User, Code, Terminal, Menu, X, ImageIcon, Github, Phone, Mail } from "lucide-react"
-import { SKILLS, EXPERIENCES, PROJECTS } from "@/data/content"
 import { useNavigation } from "@/Hooks/useNavigation"
 import { useProjectLightbox } from "@/Hooks/useProjectLightbox"
 import { useScrollReveal } from "@/Hooks/useScrollReveal"
 import ProjectLightbox from "./ProjectLightbox";
+import { Project, Experience, Skill } from "@/types";
 
-export default function PortfolioView() {
+export default function PortfolioView({ projects, experiences, skills }: { projects: Project[], experiences: Experience[], skills: Skill[] }) {
     const nav = useNavigation()
     const lightbox = useProjectLightbox()
 
@@ -66,7 +66,7 @@ export default function PortfolioView() {
                                 Hi, I&apos;m <span className="text-transparent bg-clip-text bg-linear-to-r from-neutral-500 to-neutral-900">Thanaphat</span>
                             </h1>
                             <p className="text-base sm:text-lg text-neutral-500 max-w-md font-light leading-relaxed">
-                                นักพัฒนา Web & Mobile Application ที่ชื่นชอบการเขียนโค้ดให้คลีน มินิมอล และใช้งานได้จริง
+                                Software Developer with a passion for creating clean, minimal, and functional web and mobile applications.                            
                             </p>
 
                             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -101,7 +101,7 @@ export default function PortfolioView() {
                                 <p className="text-neutral-500">{"//" + " Current tech stack"}</p>
                                 <p><span className="text-pink-500">const</span> developer = {"{"}</p>
                                 <p className="pl-4">name: <span className="text-amber-300">&apos;Thanaphat&apos;</span>,</p>
-                                <p className="pl-4">role: <span className="text-amber-300">&apos;Full Stack Developer&apos;</span>,</p>
+                                <p className="pl-4">role: <span className="text-amber-300">&apos;Software Developer&apos;</span>,</p>
                                 <p className="pl-4">focus: <span className="text-amber-300">[&apos;React&apos;, &apos;React Native&apos;, &apos;Next.js&apos;]</span></p>
                                 <p>{"};"}</p>
                                 <p className="text-neutral-500 animate-pulse">| </p>
@@ -127,7 +127,7 @@ export default function PortfolioView() {
                         <div className="grid md:grid-cols-2 gap-10 sm:gap-12 items-start">
                             <div className="space-y-5 sm:space-y-6 text-neutral-600 leading-relaxed font-light text-base sm:text-lg">
                                 <p>
-                                    ผมนักศึกษาจบใหม่ สาขาวิทยาการคอมพิวเตอร์ที่มีความชื่นชอบในการพัฒนาเว็บไซต์และแอปพลิเคชันมือถือ ด้วยประสบการณ์การฝึกสหกิจที่บริษัท Magnitude plus Co., Ltd. ผมได้มีโอกาสทำงานกับเทคโนโลยีต่างๆ เช่น React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ซึ่งช่วยให้ผมสามารถสร้างสรรค์โปรเจกต์ที่ตอบโจทย์ความต้องการของลูกค้าได้อย่างมีประสิทธิภาพ
+                                    Recent Computer Science graduate passionate about software development, with hands-on experience in web and mobile application development. Skilled in React.js, Tailwind CSS, React Native, Node.js, Express.js, and MySQL, with a solid understanding of full-stack development principles. Eager to contribute technical skills, learn from experienced professionals, and grow as a Software Developer.
                                 </p>
                             </div>
 
@@ -137,7 +137,7 @@ export default function PortfolioView() {
                                     ทักษะและความเชี่ยวชาญ
                                 </h3>
                                 <div className="flex flex-wrap gap-2.5 sm:gap-3">
-                                    {SKILLS.map((skill) => {
+                                    {skills.map((skill) => {
                                         const IconComponent: React.FC<{ className?: string }> = skill.icon;
                                         return (
                                             <span key={skill.name} className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-neutral-50 border border-neutral-200 text-neutral-700 rounded-lg text-xs sm:text-sm font-medium hover:border-neutral-400 hover:bg-neutral-100/50 transition-all cursor-default">
@@ -163,7 +163,7 @@ export default function PortfolioView() {
                         </div>
 
                         <div className="space-y-10 sm:space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-neutral-300 before:to-transparent">
-                            {EXPERIENCES.map((exp, index) => (
+                            {experiences.map((exp, index) => (
                                 <div key={exp.id} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active reveal" style={{ transitionDelay: `${index * 150}ms` }}>
                                     <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-neutral-50 bg-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                                         <div className="w-2 h-2 bg-neutral-400 rounded-full group-hover:bg-neutral-800 transition-colors"></div>
@@ -184,7 +184,7 @@ export default function PortfolioView() {
                 </section>
 
                 {/* Projects Section */}
-                {/* <section id="projects" className="py-20 sm:py-24 px-6 sm:px-12 lg:px-20 bg-white">
+                <section id="projects" className="py-20 sm:py-24 px-6 sm:px-12 lg:px-20 bg-white">
                     <div className="max-w-5xl mx-auto">
                         <div className="flex items-center gap-4 mb-10 sm:mb-12 reveal">
                             <div className="p-3 bg-neutral-100 rounded-xl text-neutral-700">
@@ -194,7 +194,7 @@ export default function PortfolioView() {
                         </div>
 
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-                            {PROJECTS.map((project, index) => (
+                            {projects.map((project, index) => (
                                 <div key={project.id} className="group rounded-2xl bg-neutral-50 border border-neutral-100 overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col reveal" style={{ transitionDelay: `${index * 150}ms` }}>
                                     <div className="relative h-40 sm:h-44 overflow-hidden">
                                         <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -233,107 +233,9 @@ export default function PortfolioView() {
                             ))}
                         </div>
                     </div>
-                </section> */}
-                {/* Projects Section */}
-                <section id="projects" className="py-20 sm:py-24 bg-white relative overflow-hidden">
-                    <div className="max-w-5xl mx-auto px-6 sm:px-12 lg:px-20 mb-8 sm:mb-12">
-                        <div className="flex items-center justify-between reveal">
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 bg-neutral-100 rounded-xl text-neutral-700">
-                                    <Code size={24} />
-                                </div>
-                                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Project</h2>
-                            </div>
-
-                            {/* ปุ่มลูกศรซ้าย-ขวา แสดงเฉพาะบนหน้าจอ PC (md:) */}
-                            <div className="hidden md:flex items-center gap-2">
-                                <button
-                                    onClick={() => {
-                                        const slider = document.getElementById('project-slider');
-                                        if (slider) slider.scrollBy({ left: -350, behavior: 'smooth' });
-                                    }}
-                                    className="p-2.5 rounded-full border border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-900 hover:text-white transition-all shadow-xs"
-                                    aria-label="Previous projects"
-                                >
-                                    <ChevronDown size={20} className="rotate-90" />
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        const slider = document.getElementById('project-slider');
-                                        if (slider) slider.scrollBy({ left: 350, behavior: 'smooth' });
-                                    }}
-                                    className="p-2.5 rounded-full border border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-900 hover:text-white transition-all shadow-xs"
-                                    aria-label="Next projects"
-                                >
-                                    <ChevronDown size={20} className="-rotate-90" />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Wrapper ของ Container ที่ทำเอฟเฟกต์ Fade ด้านข้าง */}
-                    <div className="relative w-full px-4 sm:px-12 lg:px-20">
-                        {/* แถบ Fade ด้านซ้าย */}
-                        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 lg:w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
-                        {/* แถบ Fade ด้านขวา */}
-                        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 lg:w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
-
-                        {/* ตัวเลื่อนแถวหน้ากระดานบรรทัดเดียว */}
-                        <div
-                            id="project-slider"
-                            className="flex gap-6 overflow-x-auto scroll-smooth pb-8 pt-2 px-4 select-none"
-                            style={{
-                                scrollbarWidth: 'none', /* สำหรับ Firefox */
-                                msOverflowStyle: 'none', /* สำหรับ IE/Edge */
-                            }}
-                        >
-                            {/* ซ่อน Scrollbar สำหรับ Chrome, Safari */}
-                            <style dangerouslySetInnerHTML={{ __html: `#project-slider::-webkit-scrollbar { display: none; }` }} />
-
-                            {PROJECTS.map((project, index) => (
-                                <div
-                                    key={project.id}
-                                    className="group rounded-2xl bg-neutral-50 border border-neutral-100 overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1.5 flex flex-col reveal shrink-0 w-[280px] sm:w-[320px] md:w-[350px]"
-                                    style={{ transitionDelay: `${index * 150}ms` }}
-                                >
-                                    <div className="relative h-40 sm:h-44 overflow-hidden">
-                                        <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                        <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-                                            <span className="px-2.5 py-1 bg-white/95 backdrop-blur-sm text-neutral-800 text-[10px] sm:text-xs font-semibold rounded-full shadow-sm">{project.category}</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="p-5 flex-1 flex flex-col bg-white">
-                                        <div className="flex justify-between items-start mb-3 sm:mb-4 gap-2">
-                                            <h3 className="font-bold text-base sm:text-lg text-neutral-900 group-hover:text-neutral-600 transition-colors line-clamp-1">{project.title}</h3>
-                                            <div className="flex gap-2 shrink-0">
-                                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-neutral-900 transition-colors">
-                                                    <ExternalLink size={18} />
-                                                </a>
-
-                                                {project.screenshots && (
-                                                    <button onClick={() => lightbox.openProjectPreview(project)} className="text-neutral-400 hover:text-neutral-900 transition-colors">
-                                                        <ImageIcon size={18} />
-                                                    </button>
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        <p className="text-neutral-600 text-xs sm:text-sm mb-5 sm:mb-6 flex-1 font-light leading-relaxed line-clamp-3">{project.description}</p>
-
-                                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto">
-                                            {project.tech.map((t) => (
-                                                <span key={t} className="text-[10px] sm:text-xs font-medium text-neutral-500 bg-neutral-50 border border-neutral-200 px-2 py-1 rounded-md whitespace-nowrap">
-                                                    {t}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                 </section>
+
+
 
                 {/* Contact/CTA Section */}
                 <section id="contact" className="py-20 sm:py-24 px-6 bg-neutral-900 text-white text-center">
