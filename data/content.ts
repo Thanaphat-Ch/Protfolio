@@ -1,8 +1,7 @@
-'use client'
+"use client"
 
-import type { Experience, Project, Skill } from "@/types";
+import type { Experience, Project, Skill } from "@/types"
 import { SiHtml5, SiCss, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiTailwindcss, SiExpress, SiMysql, SiFigma } from "react-icons/si"
-
 
 export const EXPERIENCES: Experience[] = [
   {
@@ -10,17 +9,16 @@ export const EXPERIENCES: Experience[] = [
     role: "Mobile Application Developer",
     company: "Magnitude plus Co., Ltd.",
     period: "2025",
-    description: "ฝึกสหกิจพัฒนาแอพพลิเคชันสั่งงาน/รับงานรถบรรทุก และเว็บไซต์ admin dashboard สำหรับใช้ในองค์กร ด้วย React.js, Tailwind CSS, React Native, Node.js, express และ MySQL ร่วมมือกับเพื่อนๆในทีมเพื่อพัฒนาแอปพลิเคชันที่ตอบโจทย์ความต้องการของลูกค้า",
+    description: "Internship project developing a job-ordering/receiving application for trucking companies and an admin dashboard website using React.js, Tailwind CSS, React Native, Node.js, express, and MySQL in collaboration with team members to create applications that meet client needs.",
   },
   {
     id: 2,
     role: "Web Developer",
     company: "",
     period: "2025 - 2026",
-    description: "โปรเจกต์จบ พัฒนาเว็บไซต์หางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี โดยใช้ React, JavaScript, Tailwind CSS, Node.js, Express และ MongoDB",
+    description: "Developed a freelance job-matching platform connecting developers with clients as a capstone project, utilizing React, JavaScript, Tailwind CSS, Node.js, Express, and MongoDB.",
   },
 ]
-
 
 export const PROJECTS: Project[] = [
   {
@@ -28,7 +26,7 @@ export const PROJECTS: Project[] = [
     title: "E-Commerce Platform",
     category: "Web Application",
     image: "/freelancefreely/freelancefreely.png",
-    description: "แพลตฟอร์มหางานฟรีแลนซ์ที่ช่วยเชื่อมโยงนักพัฒนากับลูกค้าที่ต้องการบริการด้านเทคโนโลยี",
+    description: "A freelance job-matching platform that connects developers with clients seeking tech services.",
     tech: ["React", "JavaScript", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
     link: "https://freelancefreely.vercel.app/",
     screenshots: ["/freelancefreely/1.png", "/freelancefreely/2.png", "/freelancefreely/3.png", "/freelancefreely/4.png", "/freelancefreely/5.png"],
@@ -38,7 +36,7 @@ export const PROJECTS: Project[] = [
     title: "AI Crop Prediction System",
     category: "AI / Data Science",
     image: "/Crop_Prediction_System.png",
-    description: "ระบบ AI คาดการณ์พืชที่เหมาะสมต่อการเพาะปลูกของแต่ละพื้นที่ โดยใช้ AI วิธี Decision Tree และข้อมูลสภาพอากาศและดินจากแหล่งข้อมูลภายนอก",
+    description: "An AI system that predicts suitable crops for specific areas using a Decision Tree model trained on weather and soil datasets.",
     tech: ["Python", "Streamlit"],
     link: "https://crop-prediction-system.streamlit.app/",
   },
@@ -47,21 +45,20 @@ export const PROJECTS: Project[] = [
     title: "Mask Detection System",
     category: "AI / Computer Vision",
     image: "/Mask_Detection_System.png",
-    description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
+    description: "A real-time mask detection system using YOLOv5 to analyze camera feeds and trigger alerts for unmasked individuals.",
     tech: ["HTML", "JavaScript", "TensorFlow.js"],
     link: "https://thanaphat-ch.github.io/maskDetection/",
   },
-  {
-    id: 4,
-    title: "Mask Detection System",
-    category: "AI / Computer Vision",
-    image: "/Mask_Detection_System.png",
-    description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
-    tech: ["JavaScript", "TensorFlow.js", "YOLOv5"],
-    link: "https://thanaphat-ch.github.io/maskDetection/"
-  }
+  // {
+  //   id: 4,
+  //   title: "Mask Detection System",
+  //   category: "AI / Computer Vision",
+  //   image: "/Mask_Detection_System.png",
+  //   description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
+  //   tech: ["JavaScript", "TensorFlow.js", "YOLOv5"],
+  //   link: "https://thanaphat-ch.github.io/maskDetection/",
+  // },
 ]
-
 
 export const SKILLS: Skill[] = [
   { name: "HTML", icon: SiHtml5, color: "text-orange-500" },
@@ -75,4 +72,4 @@ export const SKILLS: Skill[] = [
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-teal-400" },
   { name: "MySQL", icon: SiMysql, color: "text-blue-800" },
   // { name: "Figma", icon: SiFigma, color: "text-pink-500" },
-];
+]
