@@ -49,15 +49,15 @@ export const PROJECTS: Project[] = [
     tech: ["HTML", "JavaScript", "TensorFlow.js"],
     link: "https://thanaphat-ch.github.io/maskDetection/",
   },
-  // {
-  //   id: 4,
-  //   title: "Mask Detection System",
-  //   category: "AI / Computer Vision",
-  //   image: "/Mask_Detection_System.png",
-  //   description: "ระบบตรวจจับการสวมใส่หน้ากากอนามัยด้วยเทคโนโลยีการประมวลผลภาพและ AI โดยใช้โมเดล YOLOv5 เพื่อวิเคราะห์ภาพจากกล้องและแจ้งเตือนหากไม่พบการสวมใส่หน้ากาก",
-  //   tech: ["JavaScript", "TensorFlow.js", "YOLOv5"],
-  //   link: "https://thanaphat-ch.github.io/maskDetection/",
-  // },
+  {
+    id: 4,
+    title: "todo list",
+    category: "web",
+    image: "/todo.png",
+    description: "",
+    tech: ['next.js','nextAuth','supabase'],
+    link: "https://todo-list-thanaphat.vercel.app/",
+  },
 ]
 
 export const SKILLS: Skill[] = [
