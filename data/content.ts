@@ -51,11 +51,11 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 4,
-    title: "todo list",
-    category: "web",
+    title: "To-Do List Application",
+    category: "Web Application",
     image: "/todo.png",
-    description: "",
-    tech: ['next.js','nextAuth','supabase'],
+    description: "A to-do list web application with a secure member system, allowing users to easily manage their daily tasks.",
+    tech: ["Next.js", "NextAuth", "Supabase"],
     link: "https://todo-list-thanaphat.vercel.app/",
   },
 ]
